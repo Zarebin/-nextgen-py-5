@@ -1,1 +1,1 @@
-# This repository is Python Zarebin 5th generation
+# Python Zarebin 5th generation
