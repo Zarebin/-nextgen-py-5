@@ -2,5 +2,7 @@ venv1/
 migrations/
 __pycache__/
 __init__.py
-sqlite3.db
+*.pyc
+*.log
+db.sqlite3
 requirements.txt
