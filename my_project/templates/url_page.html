@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}shorten URL{% endblock %}
+
+{% block content %}
+<form action="#", method="post">
+    <label for="url">Enter an https:// URL:</label>
+
+    <input type="url" name="nm" id="url"
+       placeholder="https://example.com"
+       pattern="https://.*" size="50"
+       required>
+    <br>
+    <input type="submit" name="action" value="submit" class="btn btn-primary">
+    <br>
+    <br>
+    <input type="submit" name="action" value="static" class="btn btn-primary">
+
+    <TD colspan="2"><span id="text1" style="color: white">DATA1</span></TD>
+
+
+
+</form>
+{% endblock %}

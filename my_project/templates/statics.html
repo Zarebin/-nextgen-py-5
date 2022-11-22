@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} FlaskShortener Statistics {% endblock %}</h1>
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Short</th>
+            <th scope="col">long</th>
+            <th scope="col">number_of_requests</th>
+         
+            </tr>
+        </thead>
+        <tbody>
+            {% for z in url %}
+                <tr>
+                    <th scope="row">{{z.id_}}</th>
+                    <td>{{z.short }}</td>
+                    <td>{{z.long }}</td>
+                    <td>{{z.visit }}</td>
+                   
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
