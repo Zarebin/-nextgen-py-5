@@ -5,6 +5,4 @@ from django.db import models
 class Tiny(models.Model):
     long_url = models.TextField()
     short_url = models.CharField(max_length=20, blank=True, null=True)
-# class Number(models.Model):
-#     s = models.CharField(max_length=200)
-#     number_int = models.IntegerField(blank=True, null=True)
+    click_count = models.IntegerField(blank=True, default=0)

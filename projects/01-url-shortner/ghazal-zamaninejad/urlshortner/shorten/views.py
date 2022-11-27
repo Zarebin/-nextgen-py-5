@@ -1,11 +1,12 @@
 from rest_framework import generics, status
 from rest_framework.response import Response
+from django.http import HttpResponseRedirect
 from .models import *
 from .serializer import TinySerializer
 import random, string
 
 # Create your views here.
-class TinyURLCreateAPIView(generics.CreateAPIView):
+class ToShortURLCreateAPIView(generics.CreateAPIView):
     queryset = Tiny.objects.all()
     serializer_class = TinySerializer
 
@@ -43,15 +44,16 @@ class TinyURLCreateAPIView(generics.CreateAPIView):
             headers = self.get_success_headers(serializer.data)
             return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
-class LongURLRetrieveAPIView(generics.RetrieveAPIView):
+class ToLongURLRetrieveAPIView(generics.RetrieveAPIView):
     queryset = Tiny.objects.all()
     serializer_class = TinySerializer
 
     def retrieve(self, request, *args, **kwargs):
-        # instance = self.get_object()
-        short = self.request.GET['short']
-        # print(short)
-        instance = Tiny.objects.get(short_url=short)
-        # print(instance)
+        
+        short_request = self.request.GET['q']
+        instance = Tiny.objects.get(short_url=short_request)
+        # increase click counts by one whenever user asked for the long url
+        instance.click_count += 1
+        instance.save()
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
